@@ -235,20 +235,47 @@
         <!-- CONTATO -->
         <section id="contato" class="contact">
 
-            <div class="section-title">
-                <span>Contato</span>
-                <h2>Vamos conversar?</h2>
-            </div>
+    <div class="section-title">
+        <span>Contato</span>
+        <h2>Vamos conversar?</h2>
+    </div>
 
-            <form>
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <input type="text" placeholder="Telefone">
-                <textarea placeholder="Descreva seu projeto"></textarea>
-                <button type="submit">Enviar</button>
-            </form>
+    <form id="whatsappForm">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="telefone" placeholder="Telefone" required>
+        <textarea id="projeto" placeholder="Descreva seu projeto" required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
 
-        </section>
+</section>
+
+<script>
+document.getElementById("whatsappForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const telefone = document.getElementById("telefone").value;
+    const projeto = document.getElementById("projeto").value;
+
+    const mensagem =
+`*Novo contato pelo site*
+
+👤 *Nome:* ${nome}
+📧 *Email:* ${email}
+📱 *Telefone:* ${telefone}
+
+📝 *Projeto:*
+${projeto}`;
+
+    const numero = "5511930857242";
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+});
+</script>
 
     </main>
 
